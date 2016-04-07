@@ -38,6 +38,16 @@ public class AppTest
      */
     public void testApp()
     {
-      
+    	System.out.println(System.getProperty("user.dir"));
+		ApplicationContext appContext = new ClassPathXmlApplicationContext("Spring-Customer.xml");
+        Customer customer = (Customer)appContext.getBean("customer");
+        //customer.addCustomer();
+        //customer.addCustomerReturnValue();
+      /*  try {
+			customer.addCustomerThrowException();
+		} catch (Exception e) {
+			e.printStackTrace();e
+		}*/
+        customer.addCustomerAround("sunny");
     }
 }

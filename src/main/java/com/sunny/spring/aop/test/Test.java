@@ -24,7 +24,7 @@ public class Test {
       /*  try {
 			customer.addCustomerThrowException();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();e
 		}*/
         customer.addCustomerAround("sunny");
 	}
