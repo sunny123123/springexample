@@ -10,15 +10,30 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class LoggingAspect {
-	@Before("execution(* com.sunny.spring.aop.service.Customer.addCustomer(..))")
+	//@Before("execution(* com.sunny.spring.aop.service.Customer.addCustomer(..))")
+	@Before("getNamePointcut()")
 	public void logBefore(JoinPoint joinPoint) {
 		System.out.println("logBefore() is running!");
 		System.out.println("hijacked : " + joinPoint.getSignature().getName());
 		System.out.println("******");
 	}
+	/*
+	 * 每次都写表达式太麻烦，所以我们可以自已声明一个pointcut，在其他地方直接用就可以了，在上面的@Before后面，我们
+	 * 没有写表达式，直接用的Pointcut的名字，更方便一点
+	 */
+	@Pointcut("execution(* com.sunny.spring.aop.service.Customer.addCustomer(..))")
+	    public void getNamePointcut(){
+		 System.out.println("we define a pointcut");
+	 }
+	//Advice arguments, will be applied to bean methods with single String argument
+	 @Before("args(name)")
+	    public void logStringArguments(String name){
+	        System.out.println("String argument passed="+name);
+	    }
 	@After("execution(* com.sunny.spring.aop.service.Customer.addCustomer(..))")
 	public void logAfter(JoinPoint joinPoint) {
 

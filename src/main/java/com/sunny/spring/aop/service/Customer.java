@@ -18,4 +18,7 @@ public class Customer {
 	public void addCustomerAround(String name){
 		System.out.println("addCustomerAround() is running, args : " + name);
 	}
+	public void addCustomerByName(String name){
+		System.out.println("addCustomerByName() is running "+name);
+	}
 }

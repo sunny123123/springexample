@@ -20,13 +20,14 @@ public class Test {
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("Spring-Customer.xml");
         Customer customer = (Customer)appContext.getBean("customer");
         //customer.addCustomer();
+        customer.addCustomerByName("panzha");
         //customer.addCustomerReturnValue();
       /*  try {
 			customer.addCustomerThrowException();
 		} catch (Exception e) {
 			e.printStackTrace();e
 		}*/
-        customer.addCustomerAround("sunny");
+        //customer.addCustomerAround("sunny");
 	}
 
 }
